@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "add.h"
+#include "power.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	add();
+
+
+	power(2,5);
 	return EXIT_SUCCESS;
 }
 					

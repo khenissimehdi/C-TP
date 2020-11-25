@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 
-int add();
+int dicSearch(int tablo[6],int value);
 
 #endif
 			
