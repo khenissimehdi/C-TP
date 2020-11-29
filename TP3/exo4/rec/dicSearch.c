@@ -4,7 +4,7 @@
 #include <math.h>
 
 int recursive(int deb,int fin,int value,int tablo[6],int mid){
-   if(tablo[mid]== value){
+   if(tablo[mid] == value){
       return 1;
    }
    else
