@@ -54,8 +54,8 @@ void operation_action(char op){
     case '*' : product(); break;
     case '/' : quotient(); break;
     case '^' : expo(); break;
-    case '%': return;
-    case '!' : return;
+    case 'm': modulo();break;
+    case '!' : factorial();break;
     default : return ;
     }
 }
@@ -70,7 +70,90 @@ void quit_action(void){
   pause_action();
   free_windows();
 }
+unsigned int factorialCalc(unsigned int n) 
+{ 
+    if (n == 0) 
+        return 1; 
+    return n * factorialCalc(n - 1); 
+} 
+/* Dealt with the factorial. */
+void factorial(void){
+  int a;
 
+  clear_window();
+  a = stack_pop();
+  display_stack();
+  display_transition_2(a);
+  display_action_msg("Pop an element");
+  actualise_window();
+  pause_keyboard();
+  
+
+  clear_window();
+  display_transition_2(a);
+  display_operation('!');
+  display_stack();
+  display_action_msg("Compute the factorial");
+  actualise_window();
+  pause_keyboard();
+
+  clear_window();
+  int res = factorialCalc(a);
+  display_stack();
+  display_transition_1(res);
+  display_action_msg("Push the sum");
+  actualise_window();
+  pause_keyboard();
+
+  stack_push(res);
+  clear_window();
+  display_stack();
+  actualise_window();
+  pause_keyboard();
+}
+/* Dealt with the modulo. */
+void modulo(void){
+  int a, b;
+
+  clear_window();
+  a = stack_pop();
+  display_stack();
+  display_transition_2(a);
+  display_action_msg("Pop an element");
+  actualise_window();
+  pause_keyboard();
+
+  clear_window();
+  b = stack_pop();
+  display_transition_2(a);
+  display_transition_1(b);
+  display_stack();
+  display_action_msg("Pop a second element");
+  actualise_window();
+  pause_keyboard();
+
+  clear_window();
+  display_transition_2(a);
+  display_transition_1(b);
+  display_operation('m');
+  display_stack();
+  display_action_msg("Compute the modulo");
+  actualise_window();
+  pause_keyboard();
+
+  clear_window();
+  display_stack();
+  display_transition_1(a%b);
+  display_action_msg("Push the modulo");
+  actualise_window();
+  pause_keyboard();
+
+  stack_push(a%b);
+  clear_window();
+  display_stack();
+  actualise_window();
+  pause_keyboard();
+}
 
 /* Dealt with the addition. */
 void addition(void){

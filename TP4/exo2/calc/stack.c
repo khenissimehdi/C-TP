@@ -7,10 +7,7 @@ static Stack stack;
 
 void stack_init(void){
    
-    stack.values[0] = 1;
-    stack.values[1] = 4;
-    stack.values[2] = 5;
-     stack.size = 3;
+    stack.size = 0;
 }
 int stack_size(void){
    
