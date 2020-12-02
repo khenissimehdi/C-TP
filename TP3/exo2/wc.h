@@ -5,6 +5,7 @@
 
 
 int wc(char* str);
+int wc2(void);
 
 #endif
 			

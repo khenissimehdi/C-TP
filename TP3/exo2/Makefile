@@ -7,3 +7,7 @@ wc.o: wc.c
 
 main.o: main.c wc.h
 	gcc -o main.o -c main.c -W -Wall -ansi -pedantic
+
+clean:
+	rm -rf *.o
+	rm wc

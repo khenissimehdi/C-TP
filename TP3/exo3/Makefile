@@ -7,3 +7,7 @@ charconv.o: charconv.c
 
 main.o: main.c charconv.h
 	gcc -o main.o -c main.c -W -Wall -ansi -pedantic
+
+clean:
+	rm -rf *.o
+	rm charconv
