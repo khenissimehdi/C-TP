@@ -1,9 +1,7 @@
 #ifndef _STACK_
 #define _STACK_
 
-int array_size(int* array);
-void print_array(int* array);
-int are_arrays_equal(int* first, int* second);
-int* copy_array(int* array);
-int* allocate_int_array(int size);
+int* fill_array(void);
+int* random_array(int size, int max_entry);
+int* concat_array(int* first, int* second);
 #endif

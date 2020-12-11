@@ -22,7 +22,27 @@ int* allocate_integer_array(int size){
 void free_integer_array(int* tab){
   free(tab);
 }
+int sizeA(int* array){
+    int y = 0; 
+    while (array[y] != - 1)
+    {
+     y+=1;
+     
+    } 
+    
+    return y;
 
+}
+
+void print(int* array){
+    int i,size;
+    size = sizeA(array);
+    for ( i = 0; i < size; i++)
+    {
+        printf("%d\t",array[i]);
+    }
+    
+}
 /* An empty main to test the compilation of the allocation and free
    functions. */
 int main()
@@ -31,16 +51,27 @@ int main()
 
 		int*array ;
 		
-		array = fill_array();
+		/*array = fill_array();
+		putchar('\n');
+		print(array);
+		putchar('\n');*/
+		int* randArray;
+		int* contactArray;
+		array = random_array(4,80);
+		randArray = random_array(4,180);
+		contactArray = concat_array(array,randArray);
+		putchar('\n');
+		print(array);
+		putchar('\n');
+
+		putchar('\n');
+		print(randArray);
 		putchar('\n');
 		
-		
-		
-       
-    	
-    	
-		/*putchar('\n');
-		free_integer_array(array);*/
+		putchar('\n');
+		print(contactArray);
+		putchar('\n');
+	
 	return EXIT_SUCCESS;
 }
 /* printf cheat sheet 
