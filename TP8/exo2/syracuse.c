@@ -44,30 +44,36 @@ int long flyCount(int long number,int long count){
 	}	
 }
 
-int long flyCountMemo(int long number,int long* terms  ){
-	if (number == 1)
+unsigned int long flyCountMemo(int long number,int unsigned long* terms  ){
+	if (terms[number] == 0)
 	{
 		
-		return terms[number];
-	}
-	if (terms[number] == 0){
-		
-		
-		if (number%2 == 0)
+		if (number == 1)
 		{
 			
-			terms[number] = flyCountMemo(number/2,terms) +1;
-			printf(" %ld ",terms[number]);
-			
+			terms[number] = 0;
 		}
-		else
-		{
+		else{
 			
-			terms[number] = flyCountMemo(number*3+1,terms)+1;
 			
-		}	
-		
+			if (number%2 == 0)
+			{
+				
+				terms[number] = flyCountMemo(number/2,terms)+1;
+				
+				
+			}
+			else
+			{
+				
+				terms[number] = flyCountMemo(number*3+1,terms)+1;
+				
+			}	
+			
+
+		}
 	}
+	return terms[number];
 	
 	
 	

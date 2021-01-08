@@ -5,7 +5,7 @@
 
 void affiche(int long number);
 int long flyCount(int long number,int long count);
-int long flyCountMemo(int long number,int long* terms);
+unsigned int long flyCountMemo(int long number,int unsigned long* terms);
 
 #endif
 					

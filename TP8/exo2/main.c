@@ -6,9 +6,12 @@
 int main(void)
 {
 	static unsigned long int seen[200000000];
+	unsigned long result;
 	putchar('\n');
-	flyCountMemo(12,seen);
-	printf("%ld",seen[12]);
+	
+	result = flyCountMemo(27,seen);
+
+	printf("%ld",result);
 	putchar('\n');
 	return EXIT_SUCCESS;
 }
