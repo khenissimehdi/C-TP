@@ -50,7 +50,7 @@ void draw_grid(grid *g,int scale,int move_x, int move_y) {
 	int i, j;
 	for (i = 0; i < g->x_size; i++)
 		for (j = 0; j < g->y_size; j++)
-			draw_cell(&g->cells[i][j],scale,move_x,move_y);
+			draw_cell(&g->cells[j][i],scale,move_x,move_y);
 	MLV_actualise_window();
 }
 

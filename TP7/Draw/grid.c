@@ -2,9 +2,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "draw.h"
+#include "grid.h"
+
+int checkRow(table grid,int row,int col,int num){
+    int x;
+    for ( x = 0; x <= 8; x++){
+      printf("%d %d %d  \n",grid[row][x],row);
+      if (x != row && x != col)
+      {
+       if (grid[row][x] == num){
+            return 0;
+        }
+    }
+   
+  }
+   return 1;
+   
+    
+     
+}
+
+int checkCol(table grid, int row,int col,int num){
+    int x ;
+    for ( x = 0; x <= 8; x++){
+     
+      if (x != row && x != col)
+      {
+
+      
+          if (grid[x][col] == num){
+          
+          return 0;	
+        }
+      }
+    }
+    return 1;
+       
+            
+
+}
+/*
+int checkZone(grid* grid, int startRow,int startCol,int num,int lo,int ho){
+    int  j ;
+ 
+    if (lo < ho)
+    {
+      
+		for ( j = 0; j < ho; j++)
+			if (grid->cells[lo + startRow][j + startCol].number == num){
+                return 0;
+            }
+        checkZone( grid,  startRow, startCol, num, lo +1, ho);
+    }		
+
+}
 
 
-
+*/
 
 grid *create_grid(int x_size, int y_size) {
 	int i, j;
@@ -19,24 +73,25 @@ grid *create_grid(int x_size, int y_size) {
 		for (i = 0; i < x_size; i++) {
 			g->cells[i][j].x_pos = i;
 			g->cells[i][j].y_pos = j;
-			g->cells[i][j].marked = 0;
 			g->cells[i][j].number = 0;
 		}
 
 	return g;
 }
-int fillGrid( grid *board){
+int fillGrid( grid *board,tablenumber table){
     int i,j,c;
     c = 1;
     
     for (i=0 ; i<3; i++){
         for (j=0 ; j<3; j++){
          board->cells[j][i].number = c;
+         /*table[i][j] = c;*/
+         /*printf("%d %d %d " ,board->cells[i][j].number,i,j);*/
          c++;
     }
   }
 }
-int fread_board(const char* file, grid *board,int grid_w,int grid_h){
+int fread_board(const char* file, grid *board,int grid_w,int grid_h,table table){
   FILE* f;
   int i,j;
   int entry;
@@ -50,7 +105,8 @@ int fread_board(const char* file, grid *board,int grid_w,int grid_h){
   for (i=0 ; i<grid_w ; i++){
     for (j=0 ; j<grid_h ; j++){
       fscanf(f, "%d", &entry);
-      board->cells[i][j].number = entry;
+      board->cells[j][i].number = entry;
+      table[i][j] = entry;
     }
   }
   return 1;
