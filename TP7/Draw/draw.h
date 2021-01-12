@@ -5,6 +5,7 @@
 typedef struct {
 	int x_pos;
 	int y_pos;
+	int mark;
 	int number;
 } cell;
 

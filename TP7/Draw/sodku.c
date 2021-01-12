@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
 	
 	grid *c = create_grid(3,3);
 	fillGrid(c,t2);
-	draw_grid(c,50,750,200);
+
 
 /* Main game loop */
 	MLV_Event event = MLV_NONE;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 		
 		if (event == MLV_MOUSE_BUTTON && mouse_state == MLV_RELEASED) {
 
-			/* The player has pressed a button */
+		
 			if (enter != 1)
 			{
 				x_pos = x_pixel/GRID_SCALE;
@@ -88,28 +88,59 @@ int main(int argc, char* argv[]) {
 			if (mouse_button == MLV_BUTTON_LEFT && enter == 0 ) {
 
 				printf("Mouse click on ce (%d,%d)\n", x_pos, y_pos); 
-				enter = 1;
+				ce = &g->cells[x_pos][y_pos];
+				ce->mark = 1;
+				enter = 1;	
+				draw_grid(c,50,750,200);
+			
+
 				
 			}
 			else if(mouse_button == MLV_BUTTON_LEFT && enter == 1)
 			{
 				printf("Mouse click on ce2 (%d,%d)\n", x_pos2, y_pos2); 
 				printf("Mouse click on  old ce (%d,%d)\n", x_pos, y_pos); 
-				ce = &g->cells[x_pos][y_pos];
-				ce->number = ce2->number;
-				int safR,safC ;
-				
-				safR = checkRow(t1,y_pos,x_pos,ce->number);
-				safC = checkCol(t1,y_pos,x_pos,ce->number);
-
-				printf(" safe is Row : %d \n",safR);
-				printf(" safe is  Col: %d \n",safC);
-				
+				ce->x_pos = x_pos ;
+				ce->y_pos = y_pos;
+			
+			
+				ce->mark = 0;
 				draw_cell_actualise_window(ce,60,0,0);
 
+				ce->number = ce2->number;
+				
+				
+				t1[y_pos][x_pos] = ce2->number;
+				int safR,safC,safZ;
+					MLV_draw_filled_rectangle(
+						750,
+						200,
+						400,
+						400,
+						MLV_COLOR_WHITE
+						);
+				safR = checkRow(t1,y_pos,x_pos,ce->number);
+				safC = checkCol(t1,y_pos,x_pos,ce->number);
+				safZ = checkZone(t1,y_pos,x_pos,ce->number);
+				if (safR+safC+safZ == 3)
+				{
+					printf(" safe is Row : %d \n",safR);
+					printf(" safe is  Col: %d \n",safC);
+					printf(" safe is  Zone: %d \n",safZ);
+					
+					
+				}
 				enter = 0;
 				
+
+				
+				
+				
+				
+				
 			}
+			draw_cell_actualise_window(ce,60,0,0);
+
 			
 			
 		

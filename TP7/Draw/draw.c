@@ -20,21 +20,52 @@ void draw_rectangle(int x, int y, MLV_Color line_color,int scale,int move_x, int
 void draw_cell(cell *c,int scale,int move_x,int move_y) {
 
 	char label[] = "0";
+	char mark[] = "\0";
+
+	
 	MLV_Color col;
 	col = MLV_COLOR_BLACK;
-	draw_rectangle(c->x_pos, c->y_pos, MLV_COLOR_BLACK,scale,move_x,move_y);
+	
 
 		
 		sprintf(label, "%c", '0'+c->number);
+
+	
+
 		
 		if (c->number != 0)
 		{	
+			MLV_draw_filled_rectangle(
+			scale*c->x_pos+move_x,
+			scale*c->y_pos+move_y,
+			scale,
+			scale,
+			MLV_COLOR_WHITE
+		);
+		draw_rectangle(c->x_pos, c->y_pos, MLV_COLOR_BLACK,scale,move_x,move_y);
+		
 			MLV_draw_text(
 					scale*c->x_pos+move_x+(scale-10)/2,
 					scale*c->y_pos+move_y+(scale-10)/2,
 					label,
 					col
 				);
+		}
+		if (c->mark == 1 && c->number == 0) 
+		{
+			mark[0] = '?';
+		
+			MLV_draw_text(
+					scale*c->x_pos+move_x+(scale-10)/2,
+					scale*c->y_pos+move_y+(scale-10)/2,
+					mark,
+					col
+				);
+		}
+		
+		else
+		{
+			draw_rectangle(c->x_pos, c->y_pos, MLV_COLOR_BLACK,scale,move_x,move_y);
 		}
 		
 		

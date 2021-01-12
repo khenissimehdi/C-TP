@@ -7,7 +7,7 @@
 int checkRow(table grid,int row,int col,int num){
     int x;
     for ( x = 0; x <= 8; x++){
-      printf("%d %d %d  \n",grid[row][x],row);
+
       if (x != row && x != col)
       {
        if (grid[row][x] == num){
@@ -39,26 +39,32 @@ int checkCol(table grid, int row,int col,int num){
     return 1;
        
             
-
 }
-/*
-int checkZone(grid* grid, int startRow,int startCol,int num,int lo,int ho){
-    int  j ;
+
+int checkZone(table grid, int row,int col,int num){
+    int  i,j ;
  
-    if (lo < ho)
-    {
-      
-		for ( j = 0; j < ho; j++)
-			if (grid->cells[lo + startRow][j + startCol].number == num){
-                return 0;
+    int startRow = row - row % 3,startCol = col - col % 3;
+   
+    for ( i = 0; i < 3; i++){
+      for ( j = 0; j < 3; j++){
+        if (i != startRow && j != startCol ){
+           if (grid[i + startRow][j + startCol] == num){
+                return 0;	
             }
-        checkZone( grid,  startRow, startCol, num, lo +1, ho);
-    }		
+        }
+
+        }
+    }
+    return 1;
+        
+           
+              
 
 }
 
 
-*/
+
 
 grid *create_grid(int x_size, int y_size) {
 	int i, j;
@@ -73,6 +79,7 @@ grid *create_grid(int x_size, int y_size) {
 		for (i = 0; i < x_size; i++) {
 			g->cells[i][j].x_pos = i;
 			g->cells[i][j].y_pos = j;
+      g->cells[i][j].mark = 2;
 			g->cells[i][j].number = 0;
 		}
 
