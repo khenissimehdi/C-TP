@@ -1,20 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ex2.h"
+#include "exo2.h"
 
+void list_append(List *list, Cell *new)
+{
+  List current = (*list);
+  while (current->next != NULL)
+  {
+    current = current->next;
+  }
+  current->next = new;
+  current->next->next = NULL;
+}
 
 int main(void)
 {
-	
-	int z1 = 2; 
-  int z2 = 3; 
-  void * a  = &z1;
-  void * b = &z2;
-  swap_mem(a,b,1);
-  
-printf(" Im z1 %d", z1);
-printf(" Im z2 %d", z2);
-  
-	return EXIT_SUCCESS;
+
+  char *firstName = "Mehdi";
+  char *lastName = "Khenissi";
+  int age = 21;
+
+  Cell *testCell = allocate_integer_cell(firstName, lastName, age);
+  Cell *testCell2 = allocate_integer_cell("Mohamed", lastName, age);
+  List head = testCell;
+  head->next = NULL;
+  list_append(&head, testCell);
+  list_append(&head, testCell2);
+
+  return EXIT_SUCCESS;
 }
-					
