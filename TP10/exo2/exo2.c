@@ -24,7 +24,7 @@ int *allocate_integer_array(int size)
   return new_tab;
 }
 
-Cell *allocate_integer_cell(char *first, char *last, int age)
+Cell *allocate_cell(char *first, char *last, int age)
 {
   Cell *c = (Cell *)malloc(sizeof(Cell));
   if (c == NULL)

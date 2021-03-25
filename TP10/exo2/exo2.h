@@ -11,6 +11,6 @@ typedef struct cell
 
 void print(int *array, int s);
 int *allocate_integer_array(int size);
-Cell *allocate_integer_cell(char *first, char *last, int age);
+Cell *allocate_cell(char *first, char *last, int age);
 void ordered_insertion(List *l, Cell *new);
 #endif
