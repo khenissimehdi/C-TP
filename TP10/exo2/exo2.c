@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "exo2.h"
+#include <string.h>
 
 void print(int *array, int s)
 {
@@ -27,13 +28,17 @@ int *allocate_integer_array(int size)
 Cell *allocate_cell(char *first, char *last, int age)
 {
   Cell *c = (Cell *)malloc(sizeof(Cell));
+   char *f = (char *)malloc(sizeof(char));
+    char *l = (char *)malloc(sizeof(char));
   if (c == NULL)
   {
     printf("no memory");
     exit(1);
   }
-  c->first_name = first;
-  c->last_name = last;
+  strcpy(f,first);
+  strcpy(l,last);
+  c->first_name = f;
+  c->last_name = l;
   c->age = age;
   return c;
 }

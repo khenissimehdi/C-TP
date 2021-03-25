@@ -17,37 +17,36 @@ void swap_mem(void *a, void *b, size_t len)
 void list_append(List *list, Cell *new)
 {
   List current = (*list);
-  List pred = NULL;
-  while (current->next != NULL && strcmp(current->next->first_name, current->first_name))
-  {
-    /* printf(" %s %s \n", current->first_name, current->next->first_name);
-      swap_mem(current, current->next, 1);*/
-    current = current->next;
+  
+  if( strcmp(current->first_name ,new->first_name) && current->next == NULL ){
+      printf(" im the current %s \n",current->first_name );
+    current->next = new;
   }
-  //new->next = new ;
-  current->next = new;
-  swap_mem(current, current->next, 1);
-
-  current->next->next = NULL;
-}
-void list_appends(List *list, Cell *new)
-{
-  List current = (*list);
-  List pred = NULL;
-  while (current->next != NULL)
+  else{
+  
+  while (current->next != NULL  && strcmp(current->next->first_name ,new->first_name)  < 0 )
   {
-    if (strcmp(current->next->first_name, current->first_name))
-    {
-      printf(" %s %s \n", current->first_name, current->next->first_name);
-      swap_mem(current, current->next, 1);
+     
+    printf(" im the current %s %s %d\n",current->first_name,new->first_name,strcmp(current->first_name ,new->first_name)  );
+    if(current->next != NULL){
+      current = current->next ;
     }
-
-    current = current->next;
+    
+    
+     
+       
   }
-  current->next = new;
+
+ 
+  new->next = current->next;
+  new = current;
 
   current->next->next = NULL;
+  }
+
+  
 }
+
 
 void print_list(List *list)
 {
@@ -63,32 +62,24 @@ void print_list(List *list)
 int main(void)
 {
 
-  char *firstName = "C";
+  char *firstName = "A";
   char *lastName = "Khenissi";
   int age = 21;
 
   Cell *testCell = allocate_cell(firstName, lastName, age);
-  Cell *testCell2 = allocate_cell("B", lastName, age);
-  Cell *testCell3 = allocate_cell("A", lastName, age);
-  Cell *testCell4 = allocate_cell("D", lastName, age);
+  Cell *testCell2 = allocate_cell("C", lastName, age);
+  Cell *testCell3 = allocate_cell("B", lastName, age);
+  Cell *testCell4 = allocate_cell("E", lastName, age);
+  Cell *testCell5 = allocate_cell("D", lastName, age);
   List head = testCell;
   head->next = NULL;
-  list_append(&head, testCell);
   list_append(&head, testCell2);
   list_append(&head, testCell3);
+  list_append(&head, testCell5);
   list_append(&head, testCell4);
   print_list(&head);
 
-  char *test1 = "zlex";
-  char *test2 = "arafffh";
-  if (strcmp(test2, test1))
-  {
-    swap_mem(&test2, &test1, 1);
-  }
-  printf(" %s \n", test1);
-  printf(" %s  \n", test2);
 
-  printf(" my name is %s \n", head->next->first_name);
 
   return EXIT_SUCCESS;
 }
