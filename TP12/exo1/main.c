@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "exo1.h"
-void read_words(FILE *f)
+void readd_words(FILE *f)
 {
   char x[1024];
 
@@ -15,14 +15,18 @@ void read_words(FILE *f)
 int main(void)
 {
 
-  FILE *ptr = fopen("Germinal.txt", "r");
+  FILE *ptr = fopen("TD1-cyber-secu.txt", "r");
+  List head = NULL;
   if (ptr == NULL)
   {
     printf("no such file.");
     return 0;
   }
+  fill_list(&head, ptr);
 
-  read_words(ptr);
+  print_list(&head);
+  /*int check = check_exist(&head, "non");
+  printf("%d\n", check);*/
 
   return EXIT_SUCCESS;
 }
