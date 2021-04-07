@@ -15,7 +15,7 @@ void readd_words(FILE *f)
 int main(void)
 {
 
-  FILE *ptr = fopen("TD1-cyber-secu.txt", "r");
+  FILE *ptr = fopen("Germinal.txt", "r");
   List head = NULL;
   if (ptr == NULL)
   {
@@ -24,7 +24,8 @@ int main(void)
   }
   fill_list(&head, ptr);
 
-  print_list(&head);
+  /*print_list(&head);*/
+  printf(" %d different words found in %s \n", len(&head), head->word);
   /*int check = check_exist(&head, "non");
   printf("%d\n", check);*/
 

@@ -13,11 +13,22 @@ void print_list(List *list)
     current = current->next;
   }
 }
+int len(List *list)
+{
+  int len = 0;
+  List current = (*list);
+  while (current != NULL)
+  {
+    len++;
+    current = current->next;
+  }
+  return len;
+}
 
 Node *create_node(char *word)
 {
   Node *n = (Node *)malloc(sizeof(Node));
-  char *f = (char *)malloc((strlen(word) + 1) * sizeof(char)); //we don't need sizeof cause a char is one byte
+  char *f = (char *)malloc((strlen(word) + 1) * sizeof(char)); /*we don't need sizeof cause a char is one byte*/
   strcpy(f, word);
   n->word = f;
   return n;
@@ -26,7 +37,7 @@ int check_exist(List *lst, char *word)
 {
   List current = (*lst);
 
-  while (current->next != NULL)
+  while (current != NULL)
   {
 
     if (strcmp(current->word, word) == 0)
@@ -44,9 +55,9 @@ void fill_list(List *lst, FILE *f)
 
   Node *new;
   Node *ptr;
-  const char *separators = " 16;:!,.?\"\0";
+  /*const char *separators = " 16;:!,.?\"\0";*/
 
-  while (fscanf(f, "%s", x) == 1 && strtok(x, separators))
+  while (fscanf(f, "%s", x) == 1 /*&& strtok(x, separators)*/)
   {
 
     new = create_node(x);
@@ -58,7 +69,6 @@ void fill_list(List *lst, FILE *f)
     else
     {
 
-      // printf("%s\n", new->word);
       if (check_exist(lst, new->word) != 1)
       {
 
