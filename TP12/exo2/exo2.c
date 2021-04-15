@@ -3,106 +3,136 @@
 #include "exo2.h"
 #include <string.h>
 
-void print_list(List *list)
+void print_list(Node *tab[])
 {
 
+  unsigned current = 0;
+  while (current < 4096)
+  {
+    if (tab[current] != NULL)
+    {
+      /* printf("%d\n", current);*/
+      printf("%s\n", tab[current]->word);
+    }
+
+    current++;
+  }
+}
+int len(List *list)
+{
+  int len = 0;
   List current = (*list);
   while (current != NULL)
   {
-    printf("%s %s %d\n", current->first_name, current->last_name, current->age);
+    len++;
     current = current->next;
   }
-}
-int *allocate_integer_array(int size)
-{
-  int *new_tab;
-
-  new_tab = (int *)malloc((size + 1) * sizeof(int));
-  if (new_tab == NULL)
-  {
-    fprintf(stderr, "Memory allocation error\n");
-    return NULL;
-  }
-  return new_tab;
+  return len;
 }
 
-Cell *allocate_cell(char *first, char *last, int age)
+Node *create_node(char *word)
 {
-  Cell *c = (Cell *)malloc(sizeof(Cell));
-  char *f = (char *)malloc(sizeof(char));
-  char *l = (char *)malloc(sizeof(char));
-  if (c == NULL)
-  {
-    printf("no memory");
-    exit(1);
-  }
-  strcpy(f, first);
-  strcpy(l, last);
-  c->first_name = f;
-  c->last_name = l;
-  c->age = age;
-  return c;
+  Node *n = (Node *)malloc(sizeof(Node));
+  char *f = (char *)malloc((strlen(word) + 1) * sizeof(char)); /*we don't need sizeof cause a char is one byte*/
+  strcpy(f, word);
+  n->word = f;
+  return n;
 }
-void ordered_insertion(List *l, Cell *new, int order_func(Cell *, Cell *))
+int check_exist(List *lst, char *word)
 {
-  Cell *ptr;
-  if (*l == NULL)
+  List current = (*lst);
+
+  while (current != NULL)
   {
-    *l = new;
-    return;
-  }
-  else if (order_func(*l, new))
-  {
-    new->next = *l;
-    *l = new;
-    return;
-  }
-  else
-  {
-    ptr = *l;
-    while (ptr->next != NULL && !order_func(ptr->next, new))
-      ptr = ptr->next;
 
-    new->next = ptr->next,
-    ptr->next = new;
-  }
-}
-
-int age_order(Cell *p1, Cell *p2)
-{
-  if (p1->age > p2->age)
-    return 1;
-  else if (p1->age == p2->age)
-    return name_order(p1, p2);
-  else
-    return 0;
-}
-
-int name_order(Cell *p1, Cell *p2)
-{
-  int cmp_last_name = strcmp(p1->last_name, p2->last_name);
-  int cmp_first_name;
-
-  if (cmp_last_name > 0)
-    return 1;
-  else if (cmp_last_name == 0)
-  {
-    cmp_first_name = strcmp(p1->first_name, p2->first_name);
-
-    if (cmp_first_name > 0)
-      return 1;
-    else if (cmp_first_name == 0)
+    if (strcmp(current->word, word) == 0)
     {
-      if (p1->age >= p2->age)
-        return 1;
-      else
-        return 0;
+      return 1;
+    }
+
+    current = current->next;
+  }
+  return 0;
+}
+
+int check_existTAB(Node *tab[], unsigned hashcode)
+{
+
+  if (tab[hashcode] != NULL)
+  {
+    return 1;
+  }
+
+  return 0;
+}
+
+unsigned hash(char *elt)
+{
+  int i;
+  unsigned h;
+
+  h = 0;
+
+  for (i = 0; elt[i] != '\0'; i++)
+  {
+    h += ((i + 1) * elt[i]);
+  }
+
+  return h % 4096;
+}
+void fill_list(List *lst, FILE *f, Node *tab[])
+{
+  char x[1024];
+
+  Node *new;
+  Node *ptr;
+  /*const char *separators = " 16;:!,.?\"\0";*/
+  unsigned hashcode;
+
+  while (fscanf(f, "%s", x) == 1 /*&& strtok(x, separators)*/)
+  {
+
+    new = create_node(x);
+
+    if (*lst == NULL)
+    {
+      (*lst) = new;
+      ptr = (*lst);
+      hashcode = hash(new->word);
+
+      tab[hashcode] = *lst;
     }
     else
-      return 0;
+    {
+      hashcode = hash(new->word);
+
+      if (check_existTAB(tab, hashcode) != 1)
+      {
+        /*printf("%s\n", new->word);*/
+        
+        tab[hashcode] = new;
+        /*printf("%d\n", hashcode);
+        printf("%s\n", tab[hashcode]->word);*/
+      }
+      else
+      {
+        Node *current = tab[hashcode];
+        while (current->next != NULL)
+        {
+          current = current->next;
+        }
+        current->next = new;
+        current = current->next;
+      }
+    }
   }
-  else
+}
+void read_words(FILE *f)
+{
+  char x[1024];
+
+  while (fscanf(f, " %s", x) == 1)
   {
-    return 0;
+    puts(x);
   }
 }

@@ -1,0 +1,92 @@
+| TD1 INFO1 — Cyber Sécurité Fal
+
+PARIS-EST INFO
+
+MARNE-LA-VALLEE NGEMEUR
+
+ 
+
+ 
+
+Cryptographie
+
+Objectifs : maitriser les techniques de chiffrement et d’authentification.
+
+ 
+
+» Exercice 1 : Cassage d’une clef
+
+En regardant les informations ce matin, Luc Chevalier a appris qu’une équipe de cryptographes a réussi &
+casser une clef de 768 bits. IL trouve cette nouvelle surprenante car sa banque lui garantit que les transactions
+par Internet sont absolument sires grace 4 l’utilisation d’une clef de 128 bits. Expliquer cette apparente
+contradiction.
+
+» Exercice 2 : Perte d’une clef privée
+Luc Chevalier, qui utilise souvent la messagerie sécurisée de ESIPE vient de perdre sa clef privée, mais
+dispose encore de la clef publique correspondante.
+
+1. Peut-il encore envoyer des courriers électroniques chiffrés ? En recevoir ?
+
+2. Peut-il encore signer les courriers électroniques qu’il envoie? Vérifier les signatures des courriers élec-
+troniques qu’il recoit ?
+
+3. Que doit-il faire pour étre de nouveau capable d’effectuer toutes les opérations mentionnées ci-dessus ?
+
+» Exercice 3 : Algorithme RSA
+
+1. En admettant que e.d = 1 (mod w(n)), montrer que la fonction de chiffrement proposée par RSA est
+bien inverse de la fonction de déchiffrement.
+
+2. Détailler la procédure 4 suivre pour générer un couple (clef publique, clef privée).
+
+3. Chiffrer le message, 21 avec la clef publique (103,143). Le calcul peut étre facilement fait 4 la main en
+remarquant que 214 = 1 (mod 143).
+
+4. Sachant que n = 11 x 13, calculer la clef privée associée 4 la clef publique (103,143).
+
+5. Déchiffrer le message obtenu 4 la question 3 afin de retrouver le message clair.
+
+» Exercice 4 : Décryptage d’un message chiffré avec RSA
+1. Décrypter le message, cK]Z#I, qui a été chiffré avec la clef publique (7,1037594094337).
+
+» Exercice 5 : Chiffrement symétrique 3DES-EDE-CBC
+Monter sur un schéma les opérations qu’Alice doit réaliser lorsqu’elle veut envoyer un message de taille
+80 bits 4 Bob en utilisant la combinaison d’algorithmes :
+
+1. 3DES-EDE-CBC avec deux clefs DES ky et ko partagées.
+
+» Exercice 6 : Certificat
+— Expliquer le probléme que le certificat permet de résoudre.
+— Discuter les trois scénarios suivants en termes de sécurité :
+
+1. Deux certificats différents sont signés par la méme clef privée.
+2. Deux certificats différents contiennent la méme clef publique.
+
+3. Deux certificats différents ont la méme signature.
+
+INFO1 H. Badis 1/2
+TD1 INFO1 — Cyber Sécurité ral
+
+UNIVERSITE
+PARIS-EST INFO
+MARNE-LA-VALLEE NGEMEUR
+
+ 
+
+» Exercice 7 : Authentification et confidentialité
+
+A Vaide d’un Diagramme séquentiel des échanges, montrer :
+
+— Comment le protocole SSH permet-il , d’assurer l’authentification et la confidentialité des échanges
+entre 2 machines sans mot de passe?
+
+— Comment le protocole SSH permet-il d’assurer l’authentification et la confidentialité des échanges
+entre un client et un serveur en utilisant un mot de passe?
+
+— Comment le protocole HTTPS permet-il d’assurer l’authentification d’un serveur WEB et la confi-
+dentialité des échanges ?
+
+— Comment le protocole HTTPS permet-il d’assurer l’authentification d’un client ?
+
+INFO1 H. Badis 2/2
+

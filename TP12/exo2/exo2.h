@@ -1,17 +1,19 @@
-
+#include <stdio.h>
+#include <stdlib.h>
 #ifndef H_GL_HELLO
 #define H_GL_HELLO
-typedef struct cell
-{
-    char *first_name;
-    char *last_name;
-    int age;
-    struct cell *next;
-} Cell, *List;
 
-void print_list(List *list);
-Cell *allocate_cell(char *first, char *last, int age);
-void ordered_insertion(List *l, Cell *new, int order_func(Cell *, Cell *));
-int age_order(Cell *p1, Cell *p2);
-int name_order(Cell *p1, Cell *p2);
+typedef struct node
+{
+    char *word;
+    struct node *next;
+
+} Node, *List;
+
+void print_list(Node *tab[]);
+void fill_list(List *lst, FILE *f, Node *tab[]);
+int len(List *list);
+Node *create_node(char *word);
+int check_exist(List *lst, char *word);
+void swap_mem(void *z1, void *z2, size_t size);
 #endif
