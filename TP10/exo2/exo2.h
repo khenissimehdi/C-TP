@@ -14,4 +14,5 @@ Cell *allocate_cell(char *first, char *last, int age);
 void ordered_insertion(List *l, Cell *new, int order_func(Cell *, Cell *));
 int age_order(Cell *p1, Cell *p2);
 int name_order(Cell *p1, Cell *p2);
+void free_list(List *list);
 #endif
