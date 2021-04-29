@@ -82,15 +82,18 @@ int great_order(Cell *p1, Cell *p2)
     return 0;
   }
 }
-
+void free_cell(Cell *c)
+{
+  free(c->path_name);
+  free(c);
+}
 void free_list(List *list)
 {
-  List current = (*list);
 
-  while (current != NULL)
+  while (*list)
   {
-    free(current->path_name);
-    free(current);
-    current = current->next;
+    Cell *tmp = (*list);
+    *list = (*list)->next;
+    free_cell(tmp);
   }
 }
