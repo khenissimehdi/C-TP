@@ -41,7 +41,7 @@ void ordered_insertion(List *l, Cell *newcell, int order_func(Cell *, Cell *))
 
     ptr = (*l);
 
-    while (ptr->next != NULL && order_func(ptr, newcell))
+    while (ptr->next != NULL && order_func(ptr->next, newcell))
       ptr = ptr->next;
 
     newcell->next = ptr->next,
@@ -49,7 +49,7 @@ void ordered_insertion(List *l, Cell *newcell, int order_func(Cell *, Cell *))
   }
 }
 
-Cell *allocate_cell(char *path_name, int size)
+Cell *allocate_cell(const char *path_name, int size)
 {
   Cell *cell = (Cell *)malloc(sizeof(Cell));
 
@@ -64,7 +64,7 @@ Cell *allocate_cell(char *path_name, int size)
 
   cell->path_name = memory_path;
 
-  cell->size = size;
+  cell->size = (int)size;
   cell->next = NULL;
   return cell;
 }
@@ -84,7 +84,7 @@ int great_order(Cell *p1, Cell *p2)
 }
 void free_cell(Cell *c)
 {
-  free(c->path_name);
+
   free(c);
 }
 void free_list(List *list)

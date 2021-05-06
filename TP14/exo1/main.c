@@ -7,33 +7,27 @@
 #include "exo1.h"
 List head = NULL;
 
-int ls_rec(const char *fpath, const struct stat *sb, int typeflag)
-{
-  puts(fpath);
-  return 0;
-}
-
 int engine(const char *fpath, const struct stat *sb, int tflag)
 {
-
-  char *path_name = (char *)malloc((strlen(fpath) + 1) * sizeof(char));
-
-  strcpy(path_name, fpath);
-
-  ordered_insertion(&head, allocate_cell(path_name, sb->st_size), great_order);
-  free(path_name);
+  ordered_insertion(&head, allocate_cell(fpath, sb->st_size), great_order);
   return tflag - tflag;
 }
 
 int main(int argc, char *argv[])
 {
   int i;
-  if (argc < 1)
+  /**
+ *  if the argc is equal to 1 means nth have been passed we print a message 
+ * and we return 0 to stop the program
+ */
+  if (argc == 1)
   {
     printf("Usage: %s file[path][file]... \n", argv[0]);
     return 0;
   }
-
+  /**
+  *  we use ftw to read throught the file and create cells using engine 
+  */
   for (i = 1; i < argc; ++i)
   {
 
@@ -44,6 +38,9 @@ int main(int argc, char *argv[])
       exit(-1);
     }
   }
+  /**
+   *  print the first 10 biggest elements 
+   */
 
   print_first_10(&head);
   free_list(&head);
