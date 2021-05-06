@@ -38,6 +38,7 @@ int main(void)
     ordered_insertion(&head, allocate_cell(first, last, age), name_order);
   }
   print_list(&head);
-
+  free_list(&head);
+  fclose(ptr);
   return EXIT_SUCCESS;
 }
