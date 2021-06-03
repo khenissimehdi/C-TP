@@ -7,6 +7,7 @@ void print_list(List *list)
 {
 
   List current = (*list);
+  
   while (current != NULL)
   {
     printf("%s %s %d\n", current->first_name, current->last_name, current->age);

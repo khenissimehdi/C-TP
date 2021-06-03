@@ -11,7 +11,7 @@ void print_list(Node *tab[])
   {
     if (tab[current] != NULL)
     {
-      /* printf("%d\n", current);*/
+
       printf("%s\n", tab[current]->word);
     }
 
@@ -108,11 +108,8 @@ void fill_list(List *lst, FILE *f, Node *tab[])
 
       if (check_existTAB(tab, hashcode) != 1)
       {
-        /*printf("%s\n", new->word);*/
-        
+
         tab[hashcode] = new;
-        /*printf("%d\n", hashcode);
-        printf("%s\n", tab[hashcode]->word);*/
       }
       else
       {
