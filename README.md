@@ -9,9 +9,9 @@
    3. [TP12](#tp12)
    4. [TP14](#tp14)
    5. [TP15](#tp15)
-5. [Review et aide](#review-et-aide)
+5. [Review](#review)
 6. [Conclusion](#conclusion)
-   1. [Points total accumulé](#points-total-accumulé)
+   1. [Points total accumulé](#Total-Points)
 
 # Introduction
 
@@ -330,55 +330,23 @@ this is for this Lab it was really good working it and comparing the naif to the
 
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP4    | 11  | 2   | 1    | 1     |        | 1      |           | 1        | 1         | 2          | 1          | 1       |           |             |        |
+| TP12   | 11  | 2   | 1    | 1     |        | 1      |           | 1        | 1         | 2          | 1          | 1       |           |             |        |
 
-## [TP5](https://github.com/Kwaaac/ProgC/tree/main/TP5)
+## [TP14](https://github.com/khenissimehdi/C-TP/tree/master/TP14)
 
-Le TP5 à été vraiment excellent pour moi. J’avais des problèmes avec les tableaux parce que j’avais l’impression de ne pas comprendre comment ils fonctionnaient en termes d’initialisation et en passage par adresse.
+This lab wasn't really that hard expect the part where i had to understand how ftw works this what the man page say about it
 
-Ce TP a le grand avantage de tout revoir et de tout utiliser sur les tableaux, et fait un très bon exercice et m’a permis de grandement progresser sur ce plan là.
-
-Sur ce TP, j’ai pu avoir une bonne avancée en termes de completion de code.
-En effet, j’avais d’abord fait une première version du TP qui fonctionnait mais une version de base, elle était classique selon moi, à part une fonction que j’ai fait afin de factoriser pas mal de code:
-
-```c
-/**
- * Push the second array into the first
- *
- * @param first First array
- * @param second Second array
- * @param first_index Starting index to fill the first array
- * @param second_index Starting index to push from the second array
- * @param size_second Size of the second array
- */
-void push_array(int *first, int *second, int first_index, int second_index, int size_second) {
-    int i;
-    for (i = second_index; i < size_second; i++, first_index++) {
-        first[first_index] = second[i];
-    }
-
-    first[first_index] = -1;
-}
+```
+The ftw() function shall recursively descend the directory hierarchy rooted in path.
 ```
 
-Cette fonction va, comme l’indique le commentaire, push tout un tableau dans un autre, avec une gestion des index.
-Cette fonction est extrêmement utile et est souvent utilisé pour remplacer des boucle for intempestives
-
-Dans cette version, je n’avais pas gérer les erreurs, ni des test et le makefile n’était pas clair.
-
-Puis Guillaume DOMART à fait la revue [#3](https://github.com/Kwaaac/ProgC/issues/3#issue-772243545) dans laquelle il a exposé plusieurs point d’améliorations que j’ai corrigé en grande quantité !
-Dans l’issue Git, vous pourrez retrouver le commit [5c33148](https://github.com/Kwaaac/ProgC/commit/5c33148b50388ad7f924be6c0eed7fba6e1935c4) qui contient une description de mes modifications suite à la review et toutes mes modifications qui vont avec.
-En résumé j’ai pousser les tests de mes fonctions dans le main, et j’ai véritablement gérer les erreurs dans la fonction fill array pour empêcher l’ajout de nombres négatifs ce qui rend son utilisation _normalement_ impossible à rater.
-
-Et en prime j’ai pu mettre à profit la création de Makefile.
-
-En somme, ce TP m’a permis de grandement progresser sur l’utilisation des tableaux, la gestion des erreurs, la factorisation de code, une gestion des tests avec des arguments données et sur l’utilisation des Makefiles.
-
-Si il y a une chose dont je suis sûr à ce stade c’est que je pense avoir maîtrisé le principe des fonctions, des types et des variables en C.
+It takes a path and a function that we can use to any goal we want in my case i used it to get the the file name and size returned by ftw.
+In this lab i used the same code i used in the Lab 10 the one that takes names and ages of people and put insert them in a cell well for this lab its the same thing but we don't take names we take the file name and the size of the file and we call the function ordered insertion on it to store the element sorting by size from the biggest to the smallest one.Then i just print the first 10 one and i free the chained list.
+for this lab i wasn't so sure about my solution cause think allocating place for more then 10 files and then we show only the first 10 biggest one is kind of bad but i wanted to use what we learned that why also it better to compare then insert to a chained list.
 
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP5    | 7   | 1   | 1    | 1     |        |        | 1         | 1        | 1         | 1          |
+| TP14   | 11  | 1   | 1    | 1     |        | 1      |           | 1        | 1         | 2          |            | 2       |           | 2           | 1      |
 
 ## [TP15](https://github.com/khenissimehdi/C-TP/tree/master/TP15)
 
@@ -406,7 +374,7 @@ the hard part is that you have to know what to use when i started this Lab i was
       }
 ```
 
-And yes just lik this 80 % of the work is already done so please let me explain what is going on here.
+And yes just like this 80 % of the work is already done so please let me explain what is going on here.
 in the if we check if the input is a number using the isdigit function from ctype.h by looping thoogh all the input and if it not the case we say that the operation is unknown.
 
 ```c
@@ -425,22 +393,73 @@ int isNumeric(char *str)
 }
 ```
 
-a
+After doing the hard part of the Lab now we have to get the user input and to do that i used the readLine library and also readLine/History to get he older inputs here is code snippet that show the logic
 
+```c
+ while ((line = readline("> "))) /* Store the input read by readline in the variable line */
+ {
+   add_history(line); /* Add the line to history */
+   ...
+   free(line) /* Free the line cause readLine uses malloc */
+ }
+
+ clear_history(); /* Clear the history */
+```
+
+Now we juste have add the condition so that when the user enter an operation symbole like +,- or \* we do something.and we also want to to put multiple opertion and numbers at the same time means that to do that we to treat every input seprated by space alone.The solution here is to code two while loops one for the whole code and the other for this specific feature.Here a gif that explains the idea.
+
+![Alt Text](./tp15.gif)
+
+After all this we had to generatre a library for the stack this was pretty easy we just had to use the command :
+
+```c
+ar rs libstack.a stack.o
+```
+
+then add it the makefile.
+to see what we go inside it we use :
+
+```c
+nm --defined-only libstack.a
+```
+
+And that it for this lab it it was a really hard one cause we had to use libraries that we don't know but i can say that learned a lot from it
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP6    | 10  | 1   | 1    | 1     | 1      | 1      | 2         | 1        | 1         |            |            |         |           | 1           |
+| TP15 | 16 | 2 | 1 | 1 | | 1 | 2 | | 1 | 1 | 2 | | |1 |2 |
 
-# Review et aide
+# Review
+
+This semester i didn't review anyone but i got reviewed by Mister Fabian Reiter and a friend Guillaume DOMART
+Guillaume DOMART reviewed the Lab number 10 sadly when i coded the first time everything was working but it wasn't that clear i had no comments and my variables wasn't properly names so i want through all the lab and changed everything that didn't work.
+
+Mister Fabian Reiter reviewed the Lab number 14 where i forget again to put comments but i also forget to remove debug elements i also forget tp add some files to the makeFile.
+but the two biggest flaws in my code where in the function ordered_insertion that was badly coded and didn't really provide what we wanted cause i had a mistake in the last condition that will loop inside the chained list and put the new cell in the right place. The second flaw is that i was allocating space for now reason where i just have to change the signature of allocate_cell to :
+
+```c
+Cell *allocate_cell(const char *path_name, int size);
+```
+
+that way i don't have to allocate space the const string returned by ftw and copied on that allocated space.
+
+Here is a link to the two reviews :
+
+[Guillaume DOMART](./Review_TP10.md)
+
+[Fabian Reiter](./Review_TP14.md)
 
 # Conclusion
 
-## Points total accumulé:
+Now we come the end of the review we can see that even if i didn't do everything but learned a lot specially now i comfortable working with mallocs and algorithmic structures like chained list.
+
+Im satisfied with what i've done and i think that i tackled the skills that i didn't have and that i was afraid of memory allocation are a thing a the past now.
+
+## Total Points:
 
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| Total  | 80  | 9   | 11   | 9     | 8      | 10     | 7         | 7        | 3         | 3          | 3          | 3       | 0         | 0           | 4      |
+| Total  | 59  | 8   | 5    | 5     | 1      | 7      | 1         | 4        | 5         | 8          | 6          | 3       | 0         | 3           | 3      |
 
-Les points accumulés dépassent largement les objectifs de base établis en 2018 donc je suis véritablement très fier de ça ! Bon ça démontre plus que je me suis arraché à faire les TP, après est-ce qu’ils sont correctement réalisés, c’est une autre affaire.
+My total point of the C1 + C2 is 112 that i think is fair enough for someone that had real difficulties starting C programming.
 
-Merci d’avoir lu ce rapport sur mon activité du semestre 1 ! Je vous souhaite un bon courage après avoir lu ces pavés !
+Thank you so much for reading hope it was clear.
