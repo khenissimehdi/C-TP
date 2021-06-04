@@ -19,9 +19,9 @@ Hello ! in this document i will talk about the work i have done this semester in
 
 I will try to present my work in a really simple matter but in a fairly detailed one where i will go through every Lab and explain what i learned and what i didn't really get right away.
 
-I will try my best to provide the simplest writing possible please grab a coffee and enjoy the reading.
+I will try my best to provide the simplest writing possible please grab a coffee and enjoy the reading. ☕️☕☕️
 
-[Recommended Music to read this document](https://www.youtube.com/watch?v=Y7dbQj8XHmM)
+[Recommended Music to read this document](https://www.youtube.com/watch?v=Y7dbQj8XHmM) 🎶
 
 # Where i came from and who Im ?
 
@@ -49,126 +49,288 @@ So as everything is now clear we can start discussing the work.
 
 I will go over every Lab to explain how i did it also what i understood and what i have to review to understand more.I will also provide an auto-evaluation of what i coded you can see the points that i used here [page](http://igm.univ-mlv.fr/~borie/projet_info1.php).
 
-## [TP9](https://github.com/Kwaaac/ProgC/tree/main/TP2):
+## [TP9](https://github.com/khenissimehdi/C-TP/tree/master/TP9):
 
-Le TP2 a servi de rappel sur comment coder basiquement en C.
-J’ai pu revoir certaines bases que j’avais complètement oublié comme bêtement les paramètres du main et l’utilisation de argc et argv grâce à l’exercice 2.
+This Lab have 3 exercises so i will try to go other everyone of them.
+the first exercise consist of only dynamically allocating a space for an array and filling int with integers from 0 to N where the N is chosen by the user.
+to use thing i created a function called allocate_integer_array tha takes an integer as size allocate the space using the malloc function and return a pointer to the newly created array of int.
+after that i just used a fillArray function that time a pointer to an array and a size and starting filling it from 0 to N.
+and of course we have to make the teacher happy that why i freed the array and checked it with valgrind 😎
 
-L’exercice 3 m’a surtout permis de revoir la récursivité très gentiment, c’est quelque chose que je n’ai pas trop perdu car on avait l’habitude de faire énormément de récursif en DUT (python ou C).
-
-Pour l’exercice 5, j’ai évidemment utilisé le man pour revoir l’utilisation des différentes fonctions proposées dans le sujet pour pouvoir composer l’exercice sans trop de difficulté.
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP2    | 6   | 1   | 1    | 1     |        | 1      | 1         |          |           |            |            | 1       |           |
-
-## [TP3](https://github.com/Kwaaac/ProgC/tree/main/TP3):
-
-Le TP3 m’a servis également à reprendre mes bases, ceci dit, je n’ai pas fait tout les exercices, en effet, l'exercice 5 ne m'intéressais pas à faire car c'est un exercice que j'avais vu et revue en DUT et les deux autres m'ont semblé trop compliqué à faire au moment ou j’ai fais le TP, je souhaitais alors voir si je ne pouvais pas revoir du cours, ou bien me lancer sur un petit projet.
-
-L’exercice 1 n’était pas nécessairement compliqué et j’ai personnellement trouvé la version récursive bien plus simple.
-
-L’exercice 4 était un peu compliqué à mettre en place, je n’avais pas réussi sur le coup, et c’est en faisant le cours d'algorithmique sur la recherche dichotomique que je suis revenus le terminer. J’avais tenté de le faire avec juste un size et comme je maîtrisais mal les tableaux, j’avais des erreur assez stupide.
-A ce moment il était clair que j’avais un soucis avec les tableaux, déjà avec leurs initialisation puis avec leurs utilisations
-
-Finalement, je n’ai pas pris le temps de revenir sur les exercices qui m'avaient posé problèmes, autre que le 4, mais vous le lirez par la suite que j’ai fais un peu plus pour ce C1.
-
-Donc en somme sur ce TP je suis un peu tombé sur un os, donc il fallait que je me rattrape autre part.
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP3    | 3   |     |      |       |        | 1      | 1         |
-
-## [”Librairie” read](https://github.com/Kwaaac/ProgC/tree/main/lib)
-
-Comme mentionné plus haut, j’avais l’an passé adapté des fonctions de lecture d’entrée standard pour mes TP (de mémoire c’était un petit jeu au tour par tour et donc lire les entrées de chaque joueur).
-
-J’avais besoin d’avoir une vérification de l’entrée et d’assurer si les entrées contenait uniquement des entiers. Et j’avais finalisé une solution à moitié stable et bien horrible puisque, ne maîtrisant pas du tout le passage par adresse, si ma valeur de retour était l’int le plus petit possible alors je considérais que ce n’était pas bon (pour vous dire à quel point c’était horrible).
-
-Donc l'objectif de ce mini projet perso, c’était de refaire ces fonctions de lecture de d’entier contrôlé, mais cette fois sans faire quelque chose qui vous fait saigner de l'œil à chaque regard.
-
-Dans le fichier read.c, j’ai trois fonctions qui prévalent
-
-- clear_buffer;
-- read_input;
-- read_int;
-
-La première fonction va me permettre de vider le buffer à chaque fois que je ferai appel à read_input.
-
-La seconde va évidemment lire sur l’entrée standard et renvoyer ce qu’elle a lu via le pointeur par adresse.
-
-La troisième va alors utiliser la seconde pour lire l’entrée standard et convertir ce que l’utilisateur a écrit en entier.
-
-Pour cela j’utilise strtol, pour faire un contrôle d’erreur sur la conversion. je vérifie donc si l’entier est bien compris entre les bornes d’un int, si il n’y a pas eu de problème durant la conversion et si il n’y a aucun caractère autre que des numéros dans l’entrée lu.
-
-Comme j’ai voulu faire quelque chose de propre, j’ai bien entendu fait passer l’entier converti par adresse et la fonction read_int renvoie 1 ou 0 en fonction du succès de la lecture ou de l'échec de cette dernière.
-
-J’ai réutilisé cette petite librairie tout au long de mon semestre et il faut dire qu’elle m’a bien servi à partir du moment où j'ai eu besoin de faire appel à l’utilisateur (Entier secret, Tableaux remplis par l’utilisateur …).
-
-Je pense qu’il y a moyen de peut-être faire plus simple voir de l’optimiser, mais je suis assez content de ce que j’ai fait la dessus.
-
-Et ça m’a ouvert la voie pour faire le petit projet d’entier secret !
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| Read   | 6   | 1   | 1    | 1     | 1      |        |           |          | 1         |            |            |         |           |             | 1      |
-
-## [Projet d’entier secret !](https://github.com/Kwaaac/ProgC/tree/main/Projets/EntierSecret)
-
-Le projet d’entier secret consiste en donner un nombre maximum à la machine puis l’utilisateur va retrouver cet entier généré aléatoirement entre 1 et le nombre fourni, à chaque tentative le programme dit à l’utilisateur si le nombre secret est plus grand ou plus petit.
-
-Pour cela j’ai évidemment utilisé la librairie créer au dessus avec une gestion des erreurs d'entrées. Si l’utilisateur ne met pas un nombre alors il doit recommencer l’étape (donner un nombre max ou tenter de trouver le nombre secret).
-
-J’ai donc découpé le programme en plusieurs sous-fonction atomique ayant chacune leurs propre action unique.
-
-Je n’ai rien créé de particulièrement révolutionnaire sur ce projet, par contre, j’y suis retourné à la fin du semestre.<br>
-Je l’ai regretté.<br>
-Plus exactement je me suis rendu compte à quel point je ne maîtrisait pas les pointer, petit exemple de ma boucherie:
+The second exercise was the hardest by far cause i didn't know how to free a 2d array and also i didn't know how to fill it by letters exactly as described in the exercise.
+i basically tried putting code everywhere i had so many if condition and the code was disgusting i will let you take a look at the old code :
 
 ```c
-int max_limit;
-int *p_max_limit = &max_limit;
-/* ... */
-read_user_input(p_max_limit);
+void init_tab_2d(char** tab, int n, int m){
+       int x,y = 0;
+    char  r ;
+    char f ;
+    r = 'a';
+    f = 'a';
+    int h = 0;
+    for(x = 0; x< n ; x++){
+      int c = 0;
+          h = 0;
+      for(y=0; y <= m ; y++ ){
+          if(r+c <= 'z' ){
+            tab[x][y] = r + c;
+          }
+          else{
+            tab[x][y] = f + h;
+            if(f + h >= 'z'){
+              f = 'a';
+              h = 0 ;
+            }
+            h++;
+          }
+        c++;
+      }
+      r = r + 1;
+    }
+}
 ```
 
-Donc j’ai corrigé ça de manière à ce que ça soit plus joli et en prime, de faire un malloc & free.
+As you noticed the code is really artistic but as we are coding in C WE DON'T CARE ABOUT BEAUTY.
+now let's see the new code i mean the cleaner one.
 
 ```c
-int *max_limit = (int *) malloc(sizeof(int));
-/* ... */
-free(max_limit);
+void init_tab_2d(char** tab, int n, int m){
+    int x,y = 0;
+    for(x = 0; x < n ; x++){
+
+      for(y=0; y < m ; y++ ){
+         tab[x][y] = 'a' + ((x+y) % 26);
+          }
+      }
+    }
 ```
 
-Vous pourrez retrouver l’ancien main et le nouveau dans le programme.
-Donc au moins je sais que j’ai manifestement progresser sur ce plan là, c’est positif !
+Comparing both of them we can see that the second one is better and also i think that i should've took more time into understanding the advantages of the modulo
+Well by putting all this aside we can go take a close look at the interesting part and its the part where i allocate the 2d array.
 
-Finalement, ce projet était surtout pour tester ma librairie et ce fut un bon crash test car selon moi, elle fonctionne plutôt bien !
-De plus j'ai correctement atomiser les fonctions pour avoir un main léger et un retour du programme vers l'utilisateur le plus complet possible
+So i created a a function called allocate_char2D_array that takes two integers one for the first dimension and another for the second one and return a pointer to pointer of type char that represent a 2d char array.
 
-| Projet   | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| -------- | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| Entier S | 5   | 1   | 1    | 1     |        | 1      |           |          | 1         |
+In this function i begin by allocating the first dimension and then looping inside the that dimension and allocating the second one.
 
-## [TP4](https://github.com/Kwaaac/ProgC/tree/main/TP4)
+The last thing to do is to just go and free the 2d array for this i also created a function that called free_2D_char that takes 2d array of char and integer.
+This function will loop through the the tab using the first dimension and free everything then it will free the whole tab.
 
-Ce TP consistait à remplir les fonctions pour implémenter une pile en C
+Now we can attack the last exercise in this Lab this one consists of allocating and copying the arguments to that same array.
+Here again nothing magical as we need to allocate space to string we have to first allocate space to the main array then to the words inside that array after that we can just copying them using the function memcpy here is the code for further understanding
 
-Je n’ai rien fait d’exceptionnel pour faire la pile, j’ai suivis le TP et remplit les fonctions comme il me semble qu’elle devait être codée.
+```c
+char** optizAloc2(int argc, char *argv[]){
+    int i ;
+    char** new_tab = (char**)malloc(argc * sizeof(char*));
+   for( i=0; i< argc ;i++){
 
-J’ai cependant mieux compris comment fonctionnait l’utilisation des tableaux en C avec la pile, parce que c’est en utilisant et en pratiquant que je comprend les choses.
+   new_tab[i] = (char *)malloc ((length(argv[i]) * sizeof(char))* sizeof (char));
+    memcpy(new_tab[i], argv[i], (length(argv[i]) * sizeof(char)));
 
-Nous avions fait un TP similaire en première de DUT.
+  }
+  if (new_tab == NULL){
+    fprintf(stderr, "Memory allocation error\n");
+    return NULL;
+  }
+  return new_tab;
+}
 
-Même chose pour ce qui est de la lecture de la calculatrice et son implémentation.
-Je n’ai pas ressenti de difficulté de lire le code, d’y implémenter mes fichiers stack et de le modifier pour ajouter les deux fonction de modulo et de factoriel
-
-Et en plus j’ai fait la fonction factoriel en récursif donc je suis tout de même content.
-Mais après coup, je me dis que je n’avais peut-être pas besoin de faire ce TP, je me dis que le temps investi à été mieux rentabilisé en terme d’apprentissage, mais ça m’a permis de revoir des bases donc ce n’est pas négligeable quand même.
+```
 
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP4    | 6   | 1   | 1    | 1     | 1      | 1      |           |          |           |            |            |         |           |             | 1      |
+| TP9    | 10  | 1   | 1    | 1     |        | 1      |           | 2        | 1         | 1          | 2          |         |           |
+
+## [TP10](https://github.com/khenissimehdi/C-TP/tree/master/TP10):
+
+This lab was my favorite Lab so far and when i say this i mean the second part of of it but will as always go through the Lab exercise by exercise.
+
+The first exercise is about coding a swap function but this time its not that simple this time we want the swap function to be able to swap any element regardless of the type means that it doesn't matter of the elements are integers, strings or just chars.
+To do this i created a function called swap_mem that take two pointer of type void and a size(more on that later).
+you are probably asking why i used void as type well i did this cause we don't want specify if we do that the exercise will make no sense and the code will not working on other type outside of the ones you gave to the function. Alright so with all that out of the way we can go talk about the big chunk of the code or in other way the big idea of the code so if you remember earlier we specified a size so why that ? its just we are going to use that too loop through the strings we declared inside of the function cause that how we are going to to swap any elements regardless of the type is just putting the elements inside a string and swap everything inside pretty cool isn't it ? 🤯
+
+Now we can start my favorite of this Lab the second exercise where we are going to use structures pointer and functions that takes other functions in parameters.
+
+I will start by first explaining what is demanded so basically we have text file that have the name, family name and the age of a person
+and we have to code a program that put those persons in a chained list and sort them ether alphabetically or by age.
+
+in this lab we have 3 main important problems the first one is to understand how the Structure work and i mean by that what we have inside of it and what is Cell and \* List.
+
+```c
+typedef struct cell
+{
+    char *first_name; /* String  that contains the first name */
+    char *last_name; /* String  that contains the last name */
+    int age; /* Integer that contains the age */
+    struct cell *next; /*a pointer to the next cell cause here we use chained list*/
+} Cell, *List;
+```
+
+I think you already noticed but we have something kinda weird here what exactly this mean ?
+
+```c
+Cell, *List;
+```
+
+well it just the same thing but some times people find using Cell directly kind of confusing
+here is how i can explain it using code :
+
+```c
+typedef struct {
+  ...
+}Cell, *List;
+
+Cell *lst = List lst;
+```
+
+Now lets go to the second most important part and its how we going to read the text file and use the inputs ?
+Thanks to fopen that can read a file giving it a certain fileName and fscan that can parse that path line by line we can do a code that looks like this
+
+```c
+List head = NULL;
+  char first[50];
+  char last[50];
+  int age;
+
+  FILE *ptr = fopen("fileName.txt", "r");/*opening the file */
+  if (ptr == NULL)
+  {
+    printf("no such file.");
+    return 0;
+  }
+  while (fscanf(ptr, "%s %s %d", first, last, &age) == 3)
+  /* parse every line and putting everything we get into 3 variables first, last and age*/
+  {
+    ...
+  }
+
+  fclose(ptr);/*REALLY IMPORTANT ALWAYS CLOSE THE FILE OPNER OR YOU WILL GET MEMORY LOSE*/
+```
+
+Now we go check the hardest part of this Lab and tis the function ordered_insertion
+this function takes the head of the list a new cell mean and a function.
+
+```c
+List *l ;/* head of the chained list */
+Cell *new ;/* the new cell that we gonna add */
+int order_func(Cell *, Cell *); /* the function that contains the comparing logic */
+```
+
+After this out of the way now we have to start coding the function we have 3 things to consider while coding this function the first one is by making sure that the head is not empty
+
+```c
+ if (*l == NULL)
+  {
+    *l = new;
+    return;
+  }
+```
+
+Then we have to check if the head of the list is in the right place comparing it with the new cell using the order function
+
+```c
+ else if (order_func(*l, new))
+  {
+    new->next = *l;
+    *l = new;
+    return;
+  }
+```
+
+in the end we have the normal case where we going to loop while using the order function and put the the cell in the right place.
+
+```c
+else
+  {
+    ptr = *l;
+    while (ptr->next != NULL && !order_func(ptr->next, new))
+      ptr = ptr->next;
+
+    new->next = ptr->next,
+    ptr->next = new;
+  }
+```
+
+and this pretty much it for this Lab the difficulty.
+
+| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
+| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
+| TP10   | 11  | 1   | 1    | 1     |        | 1      | 1         |          | 2         | 1          | 1          | 1       |           |             |        |
+
+## [TP12](https://github.com/khenissimehdi/C-TP/tree/master/TP12)
+
+This lab is pretty much the same as the Lab 10 except this time we have to perform a search of a certain word inside a chained list aht we created and we have to create two version of code a naif one and smart one so lets start by the naif one.
+Here we are going to look just at the search function :
+
+```c
+int check_exist(List *lst, char *word)
+{
+  List current = (*lst);
+
+  while (current != NULL)
+  {
+
+    if (strcmp(current->word, word) == 0)
+    {
+      return 1;
+    }
+
+    current = current->next;
+  }
+  return 0;
+}
+```
+
+As we can see here we we loop through all the node using a while loop this is simple but its not the best way to do it when we have a big number of words leaving us with a complexity of O(n) that is basically so bad for us.
+
+That why the second version better cause we use hash table that and for this we are going to need a hash function.
+a hash table is just a structure that can map keys to values and all this is done thanks to hash function that will transform the value into a key.
+or even in simpler wat a hash table is simply an array that is addressed via a hash function.
+Here is a gif that explains the process
+
+![Alt Text](https://d18l82el6cdm1i.cloudfront.net/uploads/34EvJ7agjl-hash_table.gif)
+
+With all this said we can now look at th code first lets see the hash function.
+
+```c
+unsigned hash(char *elt)
+{
+  int i;
+  unsigned h;
+
+  h = 0;
+
+  for (i = 0; elt[i] != '\0'; i++)
+  {
+    h += ((i + 1) * elt[i]);
+  }
+
+  return h % 4096;
+}
+```
+
+As we can see here we are just adding ((i + 1) \* elt[i]); to h and doing a modulo by 4096 to stay on the range nth really magical just an application of what demanded.
+now lets see the check_exist function :
+
+```c
+int check_existTAB(Node *tab[], unsigned hashcode)
+{
+
+  if (tab[hashcode] != NULL)
+  {
+    return 1;
+  }
+
+  return 0;
+}
+```
+
+_Voila !_ comparing it with the naif one our new function is simpler and also faster and that exactly what we want we passed form O(n) to O(1).
+this is for this Lab it was really good working it and comparing the naif to the smart one and to see how a really simple solution is sometimes the best.
+
+| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
+| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
+| TP4    | 11  | 2   | 1    | 1     |        | 1      |           | 1        | 1         | 2          | 1          | 1       |           |             |        |
 
 ## [TP5](https://github.com/Kwaaac/ProgC/tree/main/TP5)
 
@@ -218,190 +380,60 @@ Si il y a une chose dont je suis sûr à ce stade c’est que je pense avoir ma�
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
 | TP5    | 7   | 1   | 1    | 1     |        |        | 1         | 1        | 1         | 1          |
 
-## [TP6](https://github.com/Kwaaac/ProgC/tree/main/TP6)
+## [TP15](https://github.com/khenissimehdi/C-TP/tree/master/TP15)
 
-Pour ce TP, c’est un TP qui m’a surtout appris l’algorithme de backtracking plus qu’autre chose. L’élément essentiel était de bien suivre les indications du TP pour ne pas finir à côté de la plaque.
+This Lab was the hardest so far in term of understanding how some libraries works.
+In This lab we will have to code a Reverse Polish calculator here is quick demo of what we expect to have.
 
-Tout d’abord, je suis plutôt content d’avoir réussi à mettre un système d’argument au sein même du make grâce à ce code préprocesseur:
+![Alt Text](https://floatingoctothorpe.uk/2018/rpn-evaluation-animation.gif)
 
-```makefile
-# Si le premier argument c'est "run"
-ifeq (sudoku,$(firstword $(MAKECMDGOALS)))
-  # Je recupere le premier argument
-  GRID_NAME := $(wordlist 2,2,$(MAKECMDGOALS))
-  # puis je l'evalue comme n'etant pas une target
-  $(eval $(GRID_NAME):;@:)
-endif
+first thing i did is to implment the stack so went and created a stack.h and a stack.c unitl here everything is kinda simple.
+after that i created two files operation.c and operation.h where i put my operations like addition, division etc and after putting all this aside now we got tot the hard part.
+
+the hard part is that you have to know what to use when i started this Lab i was going ot a direction where i was going to create my own parser sadly my ignornce have hidden from me that this parser already exisit and its caled strtol and its really esay to use.
+
+```c
+  char *endptr;
+  long val;
+    if (isNumeric(word) == 1)
+      {
+        val = strtol(word, &endptr, 10);
+        push_stack(s, val);
+      }
+      else
+      {
+        printf("Unknown operation %s \n", word);
+      }
 ```
 
-Vous pouvez aller jeter un œil au README, pour lancer une grille de sudoku, il suffit d’écrire `make sudoku grid1`.
-Je commence à être de plus en plus à l’aise avec les makefiles donc j’en profite !
+And yes just lik this 80 % of the work is already done so please let me explain what is going on here.
+in the if we check if the input is a number using the isdigit function from ctype.h by looping thoogh all the input and if it not the case we say that the operation is unknown.
 
-Pour ce qui est du TP, l’exercice 2 était facilement faisable en suivant les consignes et ce que j’y ai appris m’a permis de réaliser le l’exo 3. Je m’en suis véritablement rendu compte en aidant Robin et Eric qui n’avaient pas fait comme leurs exo 2 et s'étaient retrouvés avec des seg fault ou un code qui ne résolvait qu’a moitié.
+```c
+int isNumeric(char *str)
+{
+  int i;
+  for (i = 0; i < strlen(str); i++)
+  {
+    if (isdigit(str[i]) == 1)
+    {
+      return 1;
+    }
+  }
 
-Une bonne habitude que j’ai appliqué dans le TP est le fait d’avoir des fonction qui n’ont que 1 seules applications (les quatres fonction de vérification si un nombre est bien positionné)
-1 fonction pour la vérification des lignes,
-1 fonction pour la vérification des colonnes,
-1 fonction pour la vérification des régions,
-1 fonction qui effectue un && logique sur les trois précédentes pour savoir si le nombre est valide.
+  return 0;
+}
+```
 
-Pour le débogage, ça m’a énormément servi donc j’en suis plutôt content !
-
-J’utilise à nouveau le passage par adresse pour initialiser des pointeur de int et la fonction renvoi un code d’erreur, c’est une notion que j’ai assimilé désormais et que je réutilise de manière naturel (et que je réaliserai plus tard, pour le tp7 et projet).
-
-Guillaume DOMART à réaliser une review assez positive sur ce TP également que vous pouvez retrouver ici : [#4](https://github.com/Kwaaac/ProgC/issues/4)
-
-Finalement ce TP m’a permis de consolider ce que j'apprends depuis quelques TP et de continuer à mettre en pratique mes nouvelles connaissances !
+a
 
 | Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
 | ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
 | TP6    | 10  | 1   | 1    | 1     | 1      | 1      | 2         | 1        | 1         |            |            |         |           | 1           |
 
-## [TP7](https://github.com/Kwaaac/ProgC/tree/main/TP7)
-
-Il y a deux types de personnes qui ont réalisé ce TP, ceux qui ont pu réutiliser le TP3 d’algo qui utilise une structure et un affichage similaire aux sudoku et qui ont utilisé cette base pour faire le TP7.
-
-Dans mon cas je l’ai fait avant qu’on fasse le TP3 et qui à créer la structure lui-même.
-
-Dans un sens je me dis que j’aurai pu gagner pas du temps pour faire d’autre TP, mais dans l’autre, je suis quand même très satisfait d’avoir pu sortir une structure qui me semble satisfaisante et qui en plus ressemblait au code du TP.
-
-J’ai donc fait deux structures, une pour la grille de sudoku et une pour les cellules.
-
-Et j’ai ajouté quelques fonctionnalités optionnelles pour le TP.
-En fait j’avais préparé ma structure pour ajouter la fonctionnalité de HOVER sur les cellules (que je n’ai pas fait au final, mais une base est là). Donc j’ai fait une énumération pour avoir des états de cellules que j’ai utilisés pour afficher mes cellules qui sont bloquées et la cellules sélectionnée.
-
-J’ai aussi modifier les lignes pour mettre en lumière les régions et j’ai augmenté la font.
-
-Une petite “astuce” que j’ai apprécié rajouter c’est la gestion des clics sur une grille.
-Ma fonction me permet de sortir les index de la cellule sur laquelle le joueur à cliquer, selon une grille de sudoku (la structure). Grâce à ça, je peux changer la taille de ma grille en termes de pixel ou de case et la fonction est parfaitement polyvalente.
-
-De plus ça m’a permis d’utiliser cette structure pour la grille de sélection, je peux la poser n’importe ou dans la fenêtre et un clic dessus renverra toujours la bonne cellule sélectionnée.
-
-Le seul point faible de ça, c’est que j’ai dû faire un fichier texte pour initialiser une “grille de sudoku” qui est en fait la grille de sélection.
-
-Sur ce plan là, j’ai pu fortement progresser et mettre en application ce que j'apprends depuis le début de ce semestre pour faire un petit jeu et avec ça réutiliser ce que j’ai fait au TP précédent pour solver le sudoku.
-
-A ce stade, je n’avais pas du tout utiliser de malloc et de free et mon code était manifestement une passoire à mémoire (presque autant que la libmlv tient).
-
-Comme je ne suis absolument pas à l’aise avec les malloc et les free (notions que je n’ai jamais compris en DUT), c’est après avoir fait le TP3 d’algo que j’ai repris ce qu’ils avaient utilisée pour le réadapter sur mes structures. Ce fut ma première véritable utilisation des malloc et des free et j’ai commencé à bien mieux les appréhender, au moins sur quand et comment les utiliser.
-
-Mais c’est quelque chose que je ne maîtrise pas du tout donc je décide de sauter le TP8 pour faire le TP9 !
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP7    | 10  | 1   | 1    | 1     | 1      | 2      |           | 1        | 1         |            |            | 1       |           |             | 1      |
-
-## [TP9](https://github.com/Kwaaac/ProgC/tree/main/TP9)
-
-J’ai donc réalisé ce TP pour en apprendre plus sur les malloc et les free, un environnement qui me permet de les utiliser.
-
-C’est donc ce que j’ai fait !
-
-Le premier exercice du TP me permet de réutiliser les malloc sur des tableaux que j’avais pu voir au TP5 donc j’ai réussi assez aisément cet exercice
-
-Pour ce qui est de l’exercice 2, j’ai pu mettre en place l’exercice sans trop de difficulté car j’ai pu faire le même exercice de remplissage de tableau sur PlaTon.
-
-Et le deuxième exercice à été super intéressant parce que j’ai pu appliquer ce que j’avais copié du tp d’algo, mais cette fois sans avoir la réponse, j’ai pu recommencer du début ce qui m’assure que si je dois réutiliser de l’allocation et du free, je saurai l’utiliser sans trop de problème !
-
-Le troisème exercice à été un peu compliqué car j'ai eu des bugs que je ne comprenais pas du à ma mauvaise manière de copié les tableaux, j'effectuait mal le size des chaîne de caractère et ça c'est répercutés par une erreur sur le free que je ne comprenais pas.
-
-Comme demandé dans l'énoncé, il faut toujours adapter le malloc de l'argument au plus petit possible. Pour cela j'ai utiliser la librairie <string.h> pour avoir la longueur de chaque chaîne de caractère puis de le multiplié par son sizeof.
-
-Pour pouvoir copier les arguments dans un autre tableaux, j'ai fait appel à memcpy qui permet de copier les zones mémoires, donc la méthode que j'ai trouvé être la plus efficase pour copier un tableau de char. Comme un tableau est une suite de zone mémoire, c'est ce qui me paraît le plus adapté puisque que j'ai tout malloc et que j'ai la taille allouée.
-
-```c
-size = strlen(argv[i]) * sizeof(char);
-        tab[i] = (char *) malloc(size);
-
-        if (tab[i] == NULL) {
-            fprintf(stderr, "Memory allocation error, %d", i);
-            return NULL;
-        }
-
-        memcpy(tab[i], argv[i], size);
-```
-
-Je ne me suis pas encore attardé sur le dernier exercice pour véritablement comprendre comment fonctionne malloc et free, j’ai une petite conception grâce aux cours d’architectures système, mais je n’ai pas encore pris le temps de regarder en profondeur.
-Et bien entendu, mes trois exercices sont leaks free !
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP9    | 10  | 1   | 1    | 1     |        | 1      |           | 2        | 1         | 1          | 2          |
-
-## [TP8](https://github.com/Kwaaac/ProgC/tree/main/TP8)
-
-Le TP8 était intéressant à faire et j’ai beaucoup apprécié appliquer la mémoïsation mais je ne pense pas que je maîtrise ce principe ni même si je vais le réutiliser dans des projets futurs.
-J’ai suivi le tp “à la lettre” en implémentant l’algorithme, et il m’a permis de continuer à mettre en pratique les connaissances que j’ai acquises jusqu’ici.
-
-| Projet | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ------ | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| TP8    | 6   |     | 2    | 1     |        |        | 2         | 1        | 1         |
-
-## [Projet Three To Go](https://github.com/Kwaaac/ProgC/tree/main/Projets/ThreeToPush)
-
-Après avoir bien avancé la plupart des TP et fait ce que j’avais envie de voir pour ce premier semestre, j’avais envie de commencer un projet.
-
-En DUT2, nous avions appris et fait des TP sur les listes chaînées et doublement chaînées donc en lisant les quelques projets disponibles, mes yeux ont tout de suite louché sur le three to go.
-
-Mon objectif sur le projet n’est pas véritablement de le terminer avant la fin du semestre, mais plus de m’amuser à faire le jeu dans un premier temps et de revoir les listes chaînées dans un second temps.
-
-Je le précise dans le readme, mais je suis aller jusqu’au niveau 1,75 on va dire.
-Le jeu est jouable, mais le système de décalage à gauche n’est pas implémenter, la structure l’y prépare, mais je ne l’ai pas encore coder.
-
-Ce dont je suis assez fier, c’est qu’il m’a fallu assez peu de temps (tout est relatif bien sûr) comparer à ce que je pensais investir dans ce projet. Surtout que j’ai voulu expérimenter un peu les limites des énumérations avec le niveau 1.
-
-Dans le projet on nous demande d’attribuer moralement dès entier aux formes et couleurs. Ce que j’ai fait c’est de les associer avec des énumération. Sur le coup, malin, ça me permet d’avoir un affichage console bien plus lisible que ce que l’énoncé proposé et dans le code je trouve ça plus lisible d’avoir une création de token avec “TRIANGLE, ROUGE” que “0, 2”.
-
-Donc j’ai pu progresser sur l’utilisation des énumération et j’en suis content, mais le problème s'est avéré très casse pied une fois rentré dans la partie graphique. Comme l’intêret de ces énumeration était surtout pour l’affichage console, je me suis retrouvé bien idiot à devoir faire des fonctions pour traduire les énumération parce que je devais créer des token aléatoire (donc avec des int, qui sont au final des énumerations…).
-
-Mais je suis très content du résultat, les fonctions sont bien atomique et n’offrent qu’un seul rôle. Mes différents modules (qui ressemble à du MVC) sont bien définis et clairs.
-
-Grâce à cette modularité, le main du jeu est très court et concis.
-
-Bien entendu, j’ai pu mettre en œuvre les nouvelles connaissances sur les malloc et les free pour bien allouer et free mes structures. Dommage que la libmlv fasse autant de fuite mémoire (même un create_window → free(window) fait des fuites de mémoire).
-
-Je compte continuer ce projet pour le deuxième semestre et terminer le niveau 3 avec peut-être d’autres fonctionnalités en fonction de la charge de travail.
-Ceci dit j’ai déjà deux pistes d'amélioration dans ce projet.
-
-La première est de faire une documentation doxygen, c’est la première fois que je vois ce type de documentation et j’aimerais m’y pencher pour faire de bonnes documentation de mes projets. Je vais généralement déjà les commentaires “correctement” (/\*_ … _/ devant les fonctions), mais j’aimerais apprendre toutes la nomenclature pour produire cette doc à chaque TP et projets.
-
-La seconde est l’amélioration des fonctions de recherche de token à supprimer. Je veux avoir une fonction plus générique qui me permette de supprimer plus de 3 token en fonction et qui me donne quel type de suppression à faire (pop, remove, sur les listes doublement chaînées en couleur et forme).
-
-Finalement, je suis tout de même content car j’ai fait quelque gribouilli sur papier avant de me lancer dans l’architecture et j’ai réussi à la mettre en place sans trop d'accroc (autre que des erreurs d'inattention) et elle réussit à tenir le coup jusque là et je ne pense pas que j’aurais à la refaire pour pouvoir réussir la suite.
-
-En bref, un projet WIP qui commence bien et qui m’a bien amusé !
-
-| Projet      | Pts | I/0 | Type | Progr | Module | Compil | Récursion | Tableaux | Pointeurs | Structures | Allocation | Fichier | Bit à bit | Fct Pointer | Biblio |
-| ----------- | --- | --- | ---- | ----- | ------ | ------ | --------- | -------- | --------- | ---------- | ---------- | ------- | --------- | ----------- | ------ |
-| Three To Go | 10  | 1   | 1    |       | 1      | 1      | 1         | 1        | 1         | 2          | 1          |         |           |             | 1      |
-
 # Review et aide
 
-Voilà ce qui termine la review de mes TP.
-En parlant de review, je passe nonchalamment sur les (la) review que j’ai effectué sur celle de Robin sur son TP6 que j’ai effectué juste ici: [Review](https://github.com/Kwaaac/ProgC/blob/main/reviews/RIEUTORD%20Robin/review.md)
-
-Je n’ai peut-être pas fait de review, mais j’ai eu la chance d’assister quelques personnes de la promo !
-
-SI quelqu’un demandait de l’aide sur le discord que ce soit sur les TP de C ou sur les TP d’algo (en C), je n’ai pas hésité à les aider, mais les personnes que j’ai le plus aidé ont été Christopher WILLIAM et Éric ROBERT.
-
-Dans un premier temps, j’ai assisté Éric dans sa réalisation de ces TP 5, 6 et 7 car il était littéralement à côté de moi pendant la semaine de partiel à cause de sa distance face à l’école (les mesures barrières ont été respectées, ne vous en faites pas).
-Donc forcément quand il avait besoin d’un débogage parce que seg fault, j’ai pu l’aider à droite à gauche.
-
-Je souhaites tout de même insister dessus, mais autant au début de ce semestre j’avais un niveau en C pitoyable, je trouve que je me suis beaucoup amélioré et j’ai réussi à prendre certain automatisme que j’espère sont correct. Mais comparé à moi Christopher à véritablement débuté le C et avait beaucoup de problèmes quant à la compréhension de ce dernier au début.
-Certe ce n’est pas devenu un expert C, mais pour l’avoir accompagné sur ces TP du TP4 jusqu’au TP6 et sur ces TP d’algo, je souhaites vraiment vous dire qu’il a fait de sacré progrès, par rapport à ces débuts, j’espère que vous le remarquerez dans sa production du portfolio, mais je tenais à le mettre ici aussi.
-
-De mon côté, ça à été un apprentissage vraiment hors du commun, car j’ai pu véritablement mettre en pratique mes connaissances et expliquer ce que j’ai fait, ce que j’ai compris est selon moi le meilleur moyen d’enfoncer le clou sur l'assimilation de ces compétences. J’ai pu fortement échanger et d'autres camarades ont pu soulever mes nombreuses erreurs (Un grand merci à Guillaume DOMART et Mehdi KHENISSI qui m’ont beaucoup aidé).
-
-Je souhaite tout de même vous informer que la manière avec laquelle j’ai aidé ces personnes a été similaire à celle que j’ai employée avec des élèves que j’ai pu tutoré en javascript. Je ne leur donne pas la solution, je pousse à les faire réfléchir pour les faire arriver aux conclusions que j’ai expérimenté, mon objectif n’étant pas de les faire terminer les TP mais de comprendre ce qu’ils ont écrit, c’était long, mais, encore une fois, j’ai pu voir de très bon progrès chez Christopher.
-PlaTon
-Petit aparté sur les notes que j’ai eu sur PlaTon que j’ai effectué la semaine avant l’examen pour m'entraîner, et je suis assez content du résultat, surtout sur la partie fonction !
-
 # Conclusion
-
-En conclusion, je suis très satisfait de ce semestre. Selon moi j’ai réussi à atteindre mes objectifs que je m'étais fixé en début de semestre et j’ai retrouvé les compétences que j’avais en DUT et au delà de ça j’ai pu véritablement apprendre de manière bien plus “théorique” le C. Je suis encore loin d’avoir un excellent niveau, mais j’ai à mon sens réussi à atteindre une certaine aisance qui me conforte dans l’idée que j’apprécie coder dans ce langage et que j’arrive à fournir des rendu qui sont un tant soit peu corrects.
-
-Pour ce qui va être du C2, je compte bien entendu faire les TP fils rouge du C2 car ce sont toujours un moyens sûr de mettre en pratique mes connaissance et de me donner des objectifs clair sur ce que je dois faire, mais j’ai discuté avec Guillaume DOMART pour que nous fassion le Push It Down comme projet commun et on prévoit de faire le faire à 100% et d’ajouter de nombreuses fonctionnalités (comme un générateur de niveau aléatoire et un éditeur de niveau).
-Et bien sûr terminer le projet Three To Go.
 
 ## Points total accumulé:
 
