@@ -29,6 +29,7 @@ int isNumeric(char *str)
 
 int main(int argc, char *argv[])
 {
+  printf("Enter the h commands to see the help sextion \n");
   int exit = 0;
   stack *s = create_stack_empty();
   char *line;
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     add_history(line);
     while (word != NULL)
     {
+
       if (strcmp("+", word) == 0)
       {
         if (s->size >= 2)
@@ -138,12 +140,12 @@ int main(int argc, char *argv[])
       }
       else if (strcmp("h", word) == 0)
       {
-        printf(" ======COMMANDS======= ");
+        printf(" ======COMMANDS======= \n ");
         printf("p : print the whole stack \n ");
         printf("s : print the current size \n ");
         printf("r : reverse the first two values on the stack \n ");
-        printf("q: exit the program \n ");
-        printf(" ======OPERATIONS====== ");
+        printf("q : exit the program \n ");
+        printf(" ======OPERATIONS====== \n ");
         printf("+ : addition \n ");
         printf("* : multiplication \n ");
         printf("- : soustraction \n ");
@@ -172,6 +174,7 @@ int main(int argc, char *argv[])
       break;
     }
   }
+  free_Stack(s);
   clear_history();
   return 0;
 }

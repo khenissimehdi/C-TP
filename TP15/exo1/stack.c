@@ -61,7 +61,8 @@ void free_link(link *c)
 {
   free(c);
 }
-void free_STACK(stack *stack)
+
+void free_Stack(stack *stack)
 {
 
   while (stack->top)
