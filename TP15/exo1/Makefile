@@ -1,13 +1,13 @@
 CC=gcc
-CFLAGS=-Wall -ansi -lreadline
+CFLAGS=-Wall -ansi -lreadline -L. -lstack
 LDFLAGS=-lm
-DEPS=exo1.h operation.h
-OBJ=exo1.o operation.o
+DEPS=stack.h operation.h
+OBJ=stack.o operation.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-exo1: main.c $(OBJ)
+main: main.c $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 .PHONY: clean

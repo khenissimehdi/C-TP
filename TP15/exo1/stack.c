@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "exo1.h"
+#include "stack.h"
 #include <string.h>
 
 void print_Stack(stack *stack)
@@ -70,4 +70,21 @@ void free_STACK(stack *stack)
     stack->top = stack->top->next;
     free_link(tmp);
   }
+}
+
+void swap_mem(void *a, void *b, size_t len)
+{
+  char *p = a, *q = b, tmp;
+  size_t i;
+  for (i = 0; i != len; ++i)
+  {
+    tmp = p[i];
+    p[i] = q[i];
+    q[i] = tmp;
+  }
+}
+
+void reverse(stack *s)
+{
+  swap_mem(s->top, s->top->next, s->size);
 }

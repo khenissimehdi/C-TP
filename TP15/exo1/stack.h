@@ -45,5 +45,13 @@ void free_Stack(stack *Stack);
  */
 
 void print_Stack(stack *Stack);
+/**
+ * @brief  reverse the two first values of the stacks
+ * @note   
+ * @param  *s: 
+ * @retval None
+ */
+
+void reverse(stack *s);
 
 #endif

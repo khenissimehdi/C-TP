@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "exo1.h"
+#include "stack.h"
 #include "operation.h"
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -10,7 +10,7 @@ stack *create_stack_empty()
 {
   stack *s = (stack *)malloc(sizeof(stack));
   s->top = NULL;
-  s->size = 1;
+  s->size = 0;
   return s;
 }
 int isNumeric(char *str)
@@ -41,29 +41,87 @@ int main(int argc, char *argv[])
     {
       if (strcmp("+", word) == 0)
       {
-        addition(s);
-      }
-      else if (strcmp("+", word) == 0)
-      {
-        addition(s);
+        if (s->size >= 2)
+        {
+          addition(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
       }
       else if (strcmp("-", word) == 0)
       {
-        soustraction(s);
+        if (s->size >= 2)
+        {
+          soustraction(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
       }
       else if (strcmp("*", word) == 0)
       {
-        product(s);
+        if (s->size >= 2)
+        {
+          product(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
       }
       else if (strcmp("/", word) == 0)
       {
-        quotient(s);
+        if (s->size >= 2)
+        {
+          quotient(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
       }
       else if (strcmp("%%", word) == 0)
       {
-        modulo(s);
+        if (s->size >= 2)
+        {
+          modulo(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
+      }
+      else if (strcmp("^", word) == 0)
+      {
+        if (s->size >= 2)
+        {
+          expo(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
+      }
+      else if (strcmp("!", word) == 0)
+      {
+
+        factorial(s);
       }
 
+      else if (strcmp("r", word) == 0)
+      {
+        if (s->size >= 2)
+        {
+          reverse(s);
+        }
+        else
+        {
+          printf(" the size is less then 2 ");
+        }
+      }
       else if (strcmp("p", word) == 0)
       {
         print_Stack(s);
@@ -74,12 +132,38 @@ int main(int argc, char *argv[])
         exit = 1;
         break;
       }
+      else if (strcmp("s", word) == 0)
+      {
+        printf("%d ", s->size);
+      }
+      else if (strcmp("h", word) == 0)
+      {
+        printf(" ======COMMANDS======= ");
+        printf("p : print the whole stack \n ");
+        printf("s : print the current size \n ");
+        printf("r : reverse the first two values on the stack \n ");
+        printf("q: exit the program \n ");
+        printf(" ======OPERATIONS====== ");
+        printf("+ : addition \n ");
+        printf("* : multiplication \n ");
+        printf("- : soustraction \n ");
+        printf("/ : division \n ");
+        printf("! : factoriel \n ");
+        printf("^ : exponentiation \n ");
+      }
       else
       {
         char *endptr;
         long val;
-        val = strtol(word, &endptr, 10);
-        push_stack(s, val);
+        if (isNumeric(word) == 1)
+        {
+          val = strtol(word, &endptr, 10);
+          push_stack(s, val);
+        }
+        else
+        {
+          printf("Unknown operation %s \n", word);
+        }
       }
       word = strtok(NULL, " ");
     }

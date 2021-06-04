@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include "exo1.h"
+#include "stack.h"
 #include "operation.h"
 
 void addition(stack *s)
@@ -12,6 +12,7 @@ void addition(stack *s)
     push_stack(s, res);
     printf("%ld \n", res);
 }
+
 void soustraction(stack *s)
 {
     long a = pop_stack(s);
@@ -54,4 +55,15 @@ void modulo(stack *s)
     long res = a % b;
     push_stack(s, res);
     printf("%ld \n", res);
+}
+
+void factorial(stack *s)
+{
+    long accum = 1;
+    long n = pop_stack(s);
+
+    while (n >= 2)
+        accum *= n--;
+    push_stack(s, accum);
+    printf("%ld \n", accum);
 }
